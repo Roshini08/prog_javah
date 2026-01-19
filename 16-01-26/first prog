@@ -1,0 +1,23 @@
+class BankAccount {
+    private double balance = 1000;
+
+    public synchronized void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited: " + amount);
+    }
+
+    public synchronized void withdraw(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+            System.out.println("Withdrawn: " + amount);
+        } else {
+            System.out.println("Insufficient Balance");
+        }
+    }
+
+    public static void main(String[] args) {
+        BankAccount acc = new BankAccount();
+        acc.deposit(500);
+        acc.withdraw(300);
+    }
+}
